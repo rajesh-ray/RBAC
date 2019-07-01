@@ -1,0 +1,33 @@
+# AUTHOR - RAJESH RAY
+
+Role Based Access Control:
+
+1. Create virtual environment : virtualenv env1
+
+2. Virtual environment activate : source env1/bin/activate
+
+3. Install dependencies : pip install -r requirements.pip
+
+4. Run MYSQL server locally.
+
+5. Change database server settings in RBAC/server/settings.py
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.mysql',
+            'NAME': 'YOUR_DATABASE_NAME',
+            'USER': 'root',
+            'PASSWORD': 'ENTER_PASSWORD',
+            'HOST': '127.0.0.1',
+            'PORT': '3306'
+        }
+    }
+
+6. Migrate sql : python manage.py migrate
+
+7. API:
+    1) user_role_assign [REQUEST TYPE : POST, PARAMS : {user_id, role_id}]
+
+    2) user_role_remove [REQUEST TYPE : POST, PARAMS : {user_id, role_id}]
+
+    3) user_access_check_for_action_type_and_resource
+        [REQUEST TYPE : GET, PARAMS: {user_id, resource_id, action_type_id}]
